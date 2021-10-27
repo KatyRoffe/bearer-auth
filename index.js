@@ -1,7 +1,7 @@
 'use strict';
 
 // Start up DB Server
-const { db } = require('./src/auth/models/index.js');
+const { db } = require('./src/server.js/models/index.js');
 db.sync()
   .then(() => {
 

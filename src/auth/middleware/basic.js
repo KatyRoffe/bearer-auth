@@ -16,8 +16,7 @@ module.exports = async (req, res, next) => {
   try {
     req.user = await users.authenticateBasic(username, pass)
     next();
-  } catch (e) {
+  } catch (error) {
     res.status(403).send('Invalid Login');
   }
-
 }

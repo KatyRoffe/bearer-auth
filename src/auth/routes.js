@@ -30,6 +30,7 @@ authRouter.post('/signin', basicAuth, (req, res, next) => {
     token: req.user.token
   };
   res.status(200).json(user);
+  next();
 });
 
 authRouter.get('/users', bearerAuth, async (req, res, next) => {
