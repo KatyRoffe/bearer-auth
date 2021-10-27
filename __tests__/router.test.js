@@ -3,8 +3,8 @@
 process.env.SECRET = "toes";
 
 const supertest = require('supertest');
-const server = require('../../../src/server.js').server;
-const { db } = require('../../../src/auth/models/index.js');
+const server = require('../src/server.js').server;
+const { db } = require('../src/auth/models/index.js');
 
 const mockRequest = supertest(server);
 
@@ -71,7 +71,7 @@ describe('Auth Router', () => {
     });
 
     describe('bad logins', () => {
-      it('basic fails with known user and wrong password ', async (done) => {
+      it('basic fails with known user and wrong password ', async () => {
 
         const response = await mockRequest.post('/signin')
           .auth('admin', 'xyz')
@@ -102,7 +102,6 @@ describe('Auth Router', () => {
 
         // Not checking the value of the response, only that we "got in"
         expect(bearerResponse.status).toBe(403);
-        done()
       })
     })
 
